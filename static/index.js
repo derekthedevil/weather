@@ -9,8 +9,9 @@ let lon;
 function latlon(result) {
     lat = result['features'][0]['properties']['lat'];
     lon = result['features'][0]['properties']['lon'];
+    window.location.replace(`details/${lat}/${lon}`)
 }
-function getcord(parameter) {
+function myFunction(parameter) {
     fetch(`https://api.geoapify.com/v1/geocode/search?text=${parameter}&apiKey=5470f03b429d4a6a9e6e1479dbccc9c3`)
         .then(response => response.json())
         .then(result => latlon(result)
@@ -18,14 +19,7 @@ function getcord(parameter) {
         .catch(error => console.log('error', error));
 }
 
-function myFunction() {
-    var x = document.getElementById("myInput").value;
-    getcord(x)
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=70d6a2e48ba55104a3a94cb2a5ba73a6`)
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-}
+
 
 
 
