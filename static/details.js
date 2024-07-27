@@ -12,12 +12,18 @@ lon = y[1]
 lat = y[2]
 myFunction()
 
-let temp,feelslike,pressure,max,min,humidity,visiblity,wind_speed
+let temp,feelslike,pressure,max,min,humidity,visiblity,wind_speed,weather
 function details(result) {
     temp = result['main']['temp']
     feelslike = result['main']['feels_like']
     pressure = result['main']['pressure']
     max = result['main']['temp_max']
     min = result['main']['temp_min']
-    
+    weather = result['weather'][0]['icon']
+    console.log(weather);
+    imgurl = `https://openweathermap.org/img/wn/${weather}@2x.png`
+    document.getElementById("weathericon").src = imgurl
+    document.getElementById('temp').innerHTML = temp
 }
+
+
